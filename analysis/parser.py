@@ -1,4 +1,3 @@
-
 class State:
 	'''
 	State object with inputs c, t, s
@@ -11,6 +10,8 @@ class State:
 		self.col = c
 		self.tax = t
 		self.sal = s
+	def compute(self)
+		return self.sal*(1-self.tax)/self.col
 
 def parse_line(line):
 	'''
@@ -18,8 +19,11 @@ def parse_line(line):
 	returns a set formatted like [string, float, float, int]
 
 	'''
-
-
+	state = line[0]
+	tax = float(line[1])
+	cost_of_living = float(line[2])
+	income = int(line[3])
+	return state, cost_of_living, tax, sal
 
 def parse_file(filepath):
 	'''
@@ -35,3 +39,6 @@ def parse_file(filepath):
 		line = file_object.readline()
 		while line:
 			
+			state, col, tax, sal = parse_line(line)
+			print(state, "	", col, "	", tax, "	", sal)
+
