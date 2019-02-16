@@ -1,4 +1,4 @@
-class State:
+class StateInfo(object):
 	'''
 	State object with inputs c, t, s
 
@@ -6,7 +6,7 @@ class State:
 	t is the float tax rate
 	s is the int salary
 	'''
-	def __init(self, c=100.0, t=0.0, s=0):
+	def __init__(self, c=100.0, t=0.0, s=0):
 		self.col = c
 		self.tax = t
 		self.sal = s
@@ -38,11 +38,11 @@ def parse_file(filepath):
 
 	with open(filepath, 'r') as file_object:
 		line = file_object.readline()
-		print(line)
+		#print(line)
 		line = file_object.readline()
 		while line:
 			state, col, tax, sal = parse_line(line)
 			print(state, "	", col, "	", tax, "	", sal)
-			data[state] = State(col, tax, sal)
+			data[state] = StateInfo(col, tax, sal)
 			line = file_object.readline()
 		return data
