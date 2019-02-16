@@ -10,20 +10,21 @@ class State:
 		self.col = c
 		self.tax = t
 		self.sal = s
-	def compute(self)
+	def compute(self):
 		return self.sal*(1-self.tax)/self.col
 
-def parse_line(line):
+def parse_line(data):
 	'''
 	Inputs a tab delimited string and separates the string
 	returns a set formatted like [string, float, float, int]
 
 	'''
+	line = data.split('\t') 
 	state = line[0]
 	tax = float(line[1])
 	cost_of_living = float(line[2])
 	income = int(line[3])
-	return state, cost_of_living, tax, sal
+	return state, cost_of_living, tax, income
 
 def parse_file(filepath):
 	'''
@@ -37,8 +38,11 @@ def parse_file(filepath):
 
 	with open(filepath, 'r') as file_object:
 		line = file_object.readline()
+		print(line)
+		line = file_object.readline()
 		while line:
-			
 			state, col, tax, sal = parse_line(line)
 			print(state, "	", col, "	", tax, "	", sal)
-
+			data[state] = State(col, tax, sal)
+			line = file_object.readline()
+		return data
