@@ -2,13 +2,6 @@
 def BokehRegion_Map():
     from bokeh.plotting import figure, show, output_file
     from bokeh.sampledata.us_states import data as states
-    from bokeh.models import Range1d
-    from bokeh.models import BasicTicker, ColorBar, ColumnDataSource, LinearColorMapper, PrintfTickFormatter
-    import numpy as np
-    import pandas as pd
-    from DictofUSStatesAbbr import states_dict
-    from bokeh.models import Legend, LegendItem
-    from bokeh.transform import transform
     from Regions import region_dict, region_color
 
     state_xs = [states[code]["lons"] for code in states]
