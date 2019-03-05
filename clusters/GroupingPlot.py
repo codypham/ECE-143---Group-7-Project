@@ -21,15 +21,13 @@ for i,j in states_dict.items():
 
 data = list_to_cluster
 print(data)
-#生成一个随机数据，样本大小为100, 特征数为2（这里因为要画二维图，所以就将特征设为2，至于三维怎么画？
-#后续看有没有机会研究，当然你也可以试着降维到2维画图也行）
+#特征数为2
 estimator = KMeans(n_clusters=4)#构造聚类器，构造一个聚类数为3的聚类器
 estimator.fit(data)#聚类
 label_pred = estimator.labels_ #获取聚类标签
 centroids = estimator.cluster_centers_ #获取聚类中心
 inertia = estimator.inertia_ # 获取聚类准则的总和
 mark = ['or', 'ob', 'og', 'ok']
-#这里'or'代表中的'o'代表画圈，'r'代表颜色为红色，后面的依次类推
 color = 0
 j=0
 
