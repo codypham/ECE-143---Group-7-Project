@@ -38,7 +38,8 @@ def Bokeh_Map(value='ADJUSTED INCOME'):
     p = figure(title=f"IDEAL PLACE TO LIVE IN TERMS OF {value}", tools=TOOLS,
                x_axis_location=None, y_axis_location=None,
                tooltips=[("Name", "@name"), (value, "@values"), ("(Long, Lat)", "($x, $y)")],
-               plot_width=3000, plot_height=700)
+               toolbar_location="left",
+               plot_width=3400, plot_height=700)
 
     p.grid.grid_line_color = None
     p.hover.point_policy = "follow_mouse"
@@ -47,7 +48,7 @@ def Bokeh_Map(value='ADJUSTED INCOME'):
               fill_color={'field': 'values', 'transform': mapper}, fill_alpha=0.7,
               line_color='black', line_width=0.5,)
 
-    color_bar = ColorBar(color_mapper=mapper, location=(-2900, 0),
+    color_bar = ColorBar(color_mapper=mapper, location=(-3300, 0),
                          ticker=BasicTicker(desired_num_ticks=6),
                          formatter=PrintfTickFormatter(format="%d%%"))
 
