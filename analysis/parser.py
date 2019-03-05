@@ -1,4 +1,5 @@
 from us_state_abbrev import us_state_abbrev
+import  us_state_regions as reg 
 
 class StateInfo(object):
 	'''
@@ -20,11 +21,32 @@ class StateInfo(object):
 		return '{{state: {0}, tax: {1}, col: {2}, sal: {3}}}'.format(self.name, self.tax, self.col, self.sal)
 
 	def compute(self):
+		'''
+		Based on the salary, tax, and cost of living of the state, calculates an adjusted salary
+		and returns that value
+
+		'''
 		result = self.sal
 		tax = self.tax/100
 		result = result - (result*tax)
 		result = result/(self.col/100)
 		return round(result,2)
+
+	def region(self):
+		'''
+		Based on the state, returns the region of the US the state is in-
+			West, South, Midwest, Northeast
+		'''
+		if(self.abbrev) in reg.west:
+			return "West"
+		elif(self.abbrev) in reg.south:
+			return "South"
+		elif(self.abbrev) in reg.midwest:
+			return "Midwest"
+		elif(self.abbrev) in reg.northeast:
+			return "Northeast"
+		else:
+			return "Error"
 
 def parse_line(data):
 	'''
@@ -51,11 +73,9 @@ def parse_file(filepath):
 
 	with open(filepath, 'r') as file_object:
 		line = file_object.readline()
-		# print(line)
 		line = file_object.readline()
 		while line:
 			state, col, tax, sal = parse_line(line)
-			# print(state, "	", col, "	", tax, "	", sal)
 			data[state] = StateInfo(state, us_state_abbrev[state], col, tax, sal)
 			line = file_object.readline()
 		return data
@@ -64,9 +84,9 @@ def generate_data_set(filepath):
 	data_map = parse_file(filepath)
 
 	result = open('../data/data_analysis.tsv', 'w')
-	result.write('STATE\tCODE\tTAX\tCOST OF LIVING\tSALARY\tADJUSTED INCOME\n')
+	result.write('STATE\tCODE\tTAX\tCOST OF LIVING\tSALARY\tADJUSTED INCOME\tREGION\n')
 
 	for info in data_map.values():
-		result.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\n'.format(info.name, info.abbrev, info.tax, info.col, info.sal, info.compute()))
+		result.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\n'.format(info.name, info.abbrev, info.tax, info.col, info.sal, info.compute(), info.region()))
 
 generate_data_set('../data/master_data.tsv')

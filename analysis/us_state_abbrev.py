@@ -1,3 +1,5 @@
+#Dictionary containing the names of the states as the key and their abbreviation as its value
+
 us_state_abbrev = {
     'Alabama': 'AL',
     'Alaska': 'AK',
