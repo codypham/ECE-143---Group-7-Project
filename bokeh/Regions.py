@@ -1,3 +1,7 @@
+'''
+Regions.py contains two dictionary. region_dict has the geographic locations like 'west' as keys and abbreviation of US states as values.
+region_color has the geographic location like 'west' as keys and the color name like '#ffffff' as values
+'''
 region_dict={
     'west':['WA','OR','CA','NV','ID','MT','WY','UT','CO','AZ','NM','AK','HI'],
     'midwest':['ND','SD','NE','KS','MN','IA','MO','WI','IL','IN','OH','MI'],
