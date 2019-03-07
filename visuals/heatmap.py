@@ -4,7 +4,6 @@ import pandas as pd
 
 plotly.tools.set_credentials_file(username='codypham', api_key='CDRkiQM17NLNcxyrmvsC')
 
-# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
 df = pd.read_csv('../data/data_analysis.tsv', sep='\t')
 
 for col in df.columns:
@@ -15,7 +14,7 @@ scl = [[0.0, 'rgb(242,240,247)'],[0.2, 'rgb(218,218,235)'],[0.4, 'rgb(188,189,22
 
 df['text'] = df['STATE'] + '<br>' +\
     'Salary '+df['SALARY'] + '<br>'+\
-    'Tax '+df['TAX']+'<br>'+\
+    'Tax '+df['TAX']+'%<br>'+\
     'Cost of Living '+df['COST OF LIVING']
 
 data = [ dict(

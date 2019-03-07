@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 from listofusstates import states
 
-'''
-Scrapes a given page and outputs a tsv file containing
-the state followed by the average salary.
-:param: url
-:type: str
-'''
 def scrape_salaries(url):
+    '''
+    Scrapes a given page and outputs a tsv file containing
+    the state followed by the average salary.
+    :param: url
+    :type: str
+    '''
     assert isinstance(url, str)
 
     # get the html and set variable rows to all table rows
