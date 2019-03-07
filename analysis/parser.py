@@ -11,6 +11,29 @@ class StateInfo(object):
 	sal is the int salary
 	'''
 	def __init__(self, name, abbrev='', col=100.0, tax=0.0, sal=0):
+		'''
+		Initializer for Stateinfo object
+
+		:param: name
+		:type: str
+		
+		:param: abbrev
+		:type: str
+
+		:param: col
+		:type: float
+
+		:param: tax
+		:type: float
+
+		:param: sal
+		:type: int
+		'''
+		assert isinstance(name, str)
+		assert isinstance(abbrev, str)
+		assert isinstance(col, float)
+		assert isinstance(tax, float)	
+		assert isinstance(sal, int)
 		self.name = name
 		self.abbrev = abbrev
 		self.col = col
@@ -52,8 +75,11 @@ def parse_line(data):
 	'''
 	Inputs a tab delimited string and separates the string
 	returns a set formatted like [string, float, float, int]
-
+	
+	:param: data
+	:type: str
 	'''
+	assert isinstance(data, str)
 	line = data.split('\t')
 	state = line[0]
 	tax = float(line[1])
@@ -64,11 +90,14 @@ def parse_line(data):
 def parse_file(filepath):
 	'''
 	Parses the text of the file and returns the data in a dictionary
-
-	Filepath is a string with the input filepath location
-
+	Filepath is the input file location
 	Returns a dictionary with the key being the name of the state and
+		the stateinfo object its data
+	
+	:param: filepath
+	:type: str
 	'''
+	assert isinstance(filepath, str)
 	data = {}
 
 	with open(filepath, 'r') as file_object:
@@ -81,6 +110,14 @@ def parse_file(filepath):
 		return data
 
 def generate_data_set(filepath):
+	'''
+	Generates a tsv file at filepath consisting of all the states and their info
+
+	:param: filepath
+	:type: str
+	'''
+	assert isinstance(filepath, str)
+
 	data_map = parse_file(filepath)
 
 	result = open('../data/data_analysis.tsv', 'w')
