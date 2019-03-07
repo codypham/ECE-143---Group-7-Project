@@ -28,6 +28,7 @@ def bundle_data():
 
     dict = {}
 
+    # creating objects based on average salary
     for row in sal_rows:
         state = row[0]
         sal = int(row[1].replace(',', ''))
@@ -36,6 +37,7 @@ def bundle_data():
         else:
             dict[state] = StateInfo(name = state, avg_salary = sal)
 
+    # creating objects based on cost of living
     for row in col_rows:
         state = row[0]
         col = float(row[1])
@@ -44,6 +46,7 @@ def bundle_data():
         else:
             dict[state] = StateInfo(name = state, col = col)
 
+    # creating objects based on state tax rate
     for row in tax_rows:
         state = row[0]
         tax = float(row[1])
@@ -52,6 +55,7 @@ def bundle_data():
         else:
             dict[state] = StateInfo(name = state, tax = col)
 
+    # write to file
     for key, value in dict.items():
         result.write('{0}\t{1}\t{2}\t{3}\n'.format(value.name, value.tax, value.col, value.avg_salary))
 
