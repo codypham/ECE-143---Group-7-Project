@@ -47,7 +47,7 @@ def cluster_region(params='region'):
             plt.plot([data[j][0]], [data[j][1]], list_of_colors[j], markersize = 5)
             plt.text(data[j][0]+2,data[j][1], rev_dict[list_of_states[j]], fontsize=8,)
             j+=1
-        plt.title('ScatterPlotBased on Region')
+        plt.title('ScatterPlot Based on Region')
 
     if params=='cluster':
         for i in label_pred:
