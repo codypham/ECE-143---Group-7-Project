@@ -1,3 +1,9 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+from DictofUSStatesAbbr import states_dict
+from GroupingRegion import region_color, region_dict
 
 def cluster_region(params='region'):
     '''
@@ -5,12 +11,6 @@ def cluster_region(params='region'):
     Args:
         params (str): when the string equals to 'region', the function shows a region-based scatter-plot, when it equals to 'cluster', the function shows a cluster plot.
     '''
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import pandas as pd
-    from sklearn.cluster import KMeans
-    from DictofUSStatesAbbr import states_dict
-    from GroupingRegion import region_color, region_dict
 
     #import data
     df = pd.read_csv('../data/data_analysis.tsv', sep='\t')
