@@ -1,4 +1,10 @@
 def Bokeh_Map(value='ADJUSTED INCOME'):
+    '''
+    This function produces interactive maps using bokeh. The map shows US states in 6 different colors with data from the column named value from analysis.tsv.
+    :param value: value can be "TAX","COST OF LIVING","SALARY","ADJUSTED INCOME". Default is "Adjusted Income"
+    :return: p (bokeh figure): a bokeh interactive map
+    '''
+    assert isinstance(value,str)
     from bokeh.plotting import figure, show, output_file
     from bokeh.sampledata.us_states import data as states
     from bokeh.models import BasicTicker, ColorBar, LogColorMapper, PrintfTickFormatter
