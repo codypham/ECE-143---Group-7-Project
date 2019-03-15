@@ -1,3 +1,9 @@
+from bokeh.plotting import figure, show, output_file
+from bokeh.sampledata.us_states import data as states
+from bokeh.models import BasicTicker, ColorBar, LogColorMapper, PrintfTickFormatter
+import pandas as pd
+from bokeh.palettes import Viridis6 as palette
+
 def Bokeh_Map(value='ADJUSTED INCOME'):
     '''
     This function produces interactive maps using bokeh. The map shows US states in 6 different colors with data from the column named value from analysis.tsv.
@@ -5,13 +11,6 @@ def Bokeh_Map(value='ADJUSTED INCOME'):
     :return: p (bokeh figure): a bokeh interactive map
     '''
     assert isinstance(value,str)
-    from bokeh.plotting import figure, show, output_file
-    from bokeh.sampledata.us_states import data as states
-    from bokeh.models import BasicTicker, ColorBar, LogColorMapper, PrintfTickFormatter
-    import pandas as pd
-    from bokeh.palettes import Viridis6 as palette
-
-
     # import data
     df = pd.read_csv('../data/data_analysis.tsv', sep='\t')
     # fomat new sourcedata for map

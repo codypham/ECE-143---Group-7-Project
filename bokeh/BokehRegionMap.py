@@ -1,12 +1,12 @@
+from bokeh.plotting import figure, show, output_file
+from bokeh.sampledata.us_states import data as states
+from Regions import region_dict, region_color
 
 def BokehRegion_Map():
     '''
     This function produces a bokeh map of US states which is colored based on geographic locations. It needs to import two dictionaries from regions.py.
     :return: p (bokeh figure): the result of bokeh map coloring states by region
     '''
-    from bokeh.plotting import figure, show, output_file
-    from bokeh.sampledata.us_states import data as states
-    from Regions import region_dict, region_color
 
     state_xs = [states[code]["lons"] for code in states]
     state_ys = [states[code]["lats"] for code in states]
