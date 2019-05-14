@@ -3,7 +3,7 @@ import plotly.plotly as py
 import pandas as pd
 
 # setup Plotly credentials
-plotly.tools.set_credentials_file(username='codypham', api_key='CDRkiQM17NLNcxyrmvsC')
+plotly.tools.set_credentials_file(username='', api_key='')
 
 # read data set into Pandas DataFrame
 df = pd.read_csv('../data/data_analysis.tsv', sep='\t')
